@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rathinam IDEA Lab — Innovation Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root { --accent: #0ea5a4; }
+    .bg-canvas {
+      position: fixed; inset: 0;
+      z-index: 0; pointer-events: none;
+      mix-blend-mode: screen;
+    }
+    .gear, .blueprint { filter:drop-shadow(0 8px 30px rgba(2,6,23,0.35)); }
+    @keyframes floatY{0%{transform:translateY(0)}50%{transform:translateY(-22px)}100%{transform:translateY(0)}}
+    @keyframes spinSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+    @keyframes zoomInFade { 0% {transform: scale(0.7); opacity: 0} 100% {transform: scale(1); opacity: 1} }
+    @keyframes sectionUp {0%{opacity:0;transform:translateY(48px);}100%{opacity:1;transform:translateY(0);}}
+    @keyframes pulseGlow {
+      0%,100% { box-shadow: 0 0 0 0 var(--accent, #0ea5a4); opacity:0.6; }
+      50% { box-shadow: 0 0 20px 8px var(--accent, #0ea5a4); opacity:0.95;}
+    }
+    .glass{background:linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.045));backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.09)}
+    .neon{text-shadow:0 7px 30px rgba(14,165,164,0.17)}
+    .section-animated { animation: sectionUp 1.3s cubic-bezier(.37,1.25,.7,.8) both; }
+    .fade-delay-0{animation-delay:0.06s;}
+    .fade-delay-1{animation-delay:0.16s;}
+    .fade-delay-2{animation-delay:0.22s;}
+    .fade-delay-3{animation-delay:0.29s;}
+    .hero-title-animated { animation: zoomInFade 1.35s cubic-bezier(.28,.78,.52,.98) both; }
+    .cta-animated { transition: box-shadow .3s; }
+    .cta-animated:hover { animation: pulseGlow 1.2s infinite alternate; }
+    .card-hover-animated { transition: .32s cubic-bezier(.18,.79,.82,.57); }
+    .card-hover-animated:hover {transform:scale(1.065); box-shadow:0 2px 38px 8px var(--accent,#0ea5a4,0.44); }
+    .gear g, .blueprint { transition: filter 0.45s; }
+    .gear:hover g, .blueprint:hover { filter: drop-shadow(0 0 46px var(--accent,#0ea5a4)); }
+    .floater {
+      position: absolute;
+      border-radius: 9999px;
+      pointer-events: none;
+      opacity: 0.16;
+      z-index:1;
+      animation: floatY 9s ease-in-out infinite, pulseGlow 4s alternate infinite;
+      filter: blur(1.4px);
+      mix-blend-mode:plus-lighter;
+    }
+    .divider-wave svg {display:block;}
+    @media (max-width:640px){
+      .bg-canvas{opacity:0.8}
+      .gear, .blueprint{display:none}
+      .section-animated, .hero-title-animated { animation-duration: 1s !important; }
+    }
+  </style>
+</head>
+<body class="bg-[#071029] text-slate-100 antialiased leading-relaxed overflow-x-hidden">
+  <!-- Floating Orbs -->
+  <div class="floater bg-teal-300" style="width:54px;height:54px;left:61vw;top:16vh;animation-delay:.8s"></div>
+  <div class="floater bg-teal-200" style="width:26px;height:26px;left:82vw;top:56vh;animation-delay:3.1s"></div>
+  <div class="floater bg-cyan-300" style="width:32px;height:32px;left:11vw;top:21vh;animation-delay:2.7s"></div>
+  <div class="floater bg-sky-400" style="width:28px;height:28px;left:42vw;top:77vh;animation-delay:2.1s"></div>
+
+  <!-- SVG Engineering Background: Blueprint lines & Gears -->
+  <svg class="bg-canvas" width="100%" height="100%" preserveAspectRatio="none" aria-hidden>
+    <defs>
+      <filter id="blur"><feGaussianBlur stdDeviation="18"/></filter>
+    </defs>
+    <g opacity="0.24">
+      <ellipse cx="9%" cy="16%" rx="220" ry="110" fill="#083047" filter="url(#blur)"></ellipse>
+      <ellipse cx="74%" cy="84%" rx="310" ry="140" fill="#052233" filter="url(#blur)"></ellipse>
+    </g>
+    <g class="blueprint" style="opacity:0.18;animation:spinSlow 40s linear infinite;transform-origin:400px 250px;">
+      <rect x="45" y="30" width="700" height="430" stroke="#38bdf8" stroke-width="2.2" fill="none"/>
+      <circle cx="390" cy="245" r="184" stroke="#0ea5a4" stroke-width="1.3" fill="none"/>
+      <line x1="100" y1="110" x2="720" y2="410" stroke="#0ea5a4" stroke-width="0.8"/>
+      <line x1="80" y1="420" x2="670" y2="50" stroke="#38bdf8" stroke-width="0.7"/>
+    </g>
+    <g class="gear" transform="translate(86,92) scale(0.62)" style="animation:floatY 7s ease-in-out infinite">
+      <g style="animation:spinSlow 19s linear infinite">
+        <circle cx="62" cy="60" r="32" stroke="#123" stroke-width="2.8" fill="#0ea5a4cc"/>
+        <g>
+          <circle cx="62" cy="60" r="16" stroke="#38bdf8" stroke-width="2" fill="#083047" />
+          <rect x="78" y="56" width="9" height="7" rx="2" fill="#38bdf879"/>
+          <rect x="39" y="70" width="8" height="7" rx="2" fill="#38bdf879"/>
+        </g>
+      </g>
+    </g>
+    <g class="gear" transform="translate(916,420) scale(0.84)" style="animation:floatY 12s ease-in-out 1s infinite">
+      <g style="animation:spinSlow 27s linear reverse infinite">
+        <circle cx="42" cy="40" r="26" stroke="#123" stroke-width="2.6" fill="#0ea5a422" />
+        <circle cx="42" cy="40" r="14" stroke="#0ea5a4" stroke-width="0.9" fill="none" />
+        <rect x="48" y="25" width="6" height="8" rx="2" fill="#0ea5a422"/>
+      </g>
+    </g>
+  </svg>
+
+  <div class="relative z-10 min-h-screen flex flex-col">
+    <header class="py-6 px-6 lg:px-12 flex items-center justify-between section-animated fade-delay-0">
+      <div class="flex items-center gap-4">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center bg-white/5 ring-1 ring-white/5">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-lg font-semibold">Rathinam IDEA Lab</h1>
+          <p class="text-xs text-slate-400">Innovation | Design | Entrepreneurship</p>
+        </div>
+      </div>
+      <nav class="hidden md:flex gap-6 items-center text-sm text-slate-300">
+        <a href="#about" class="hover:text-white">About</a>
+        <a href="#focus" class="hover:text-white">Focus Areas</a>
+        <a href="#infrastructure" class="hover:text-white">Infrastructure</a>
+        <a href="#team" class="hover:text-white">Team</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="px-6 lg:px-12 py-10 md:py-20 flex-1 section-animated">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+        <div class="space-y-6">
+          <h2 class="text-4xl md:text-5xl font-extrabold neon leading-tight hero-title-animated">AICTE IDEA Lab<br/><span class="text-teal-300">Rathinam Technical Campus</span></h2>
+          <p class="text-slate-300 max-w-xl">A hands-on innovation hub that transforms ideas into prototypes. Access 3D printers, CNC, laser cutters, electronics benches, and mentorship to build industry-ready projects and startup ventures.</p>
+          <div class="flex gap-4">
+            <a href="#focus" class="inline-flex items-center gap-3 bg-teal-500/10 glass px-4 py-2 rounded-lg ring-1 ring-white/6 cta-animated">Explore Focus Areas</a>
+            <a href="#infrastructure" class="inline-flex items-center gap-3 bg-white/6 px-4 py-2 rounded-lg cta-animated">See Infrastructure</a>
+          </div>
+        </div>
+        <!-- Animated gears "hero visual" -->
+        <div class="relative flex justify-center items-center h-64">
+          <div class="w-40 h-40 rounded-full border-4 border-teal-400/30 animate-spin-slow"></div>
+          <div class="absolute w-24 h-24 border-4 border-teal-300/20 rounded-full animate-spin-reverse"></div>
+          <svg width="68" height="68" viewBox="0 0 68 68" fill="none" class="absolute left-12 top-8 animate-spin-slow"
+            style="animation-duration:18s">
+            <circle cx="34" cy="34" r="28" stroke="#0ea5a4" stroke-width="3" fill="none"></circle>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- Animated Divider -->
+    <div class="divider-wave -mb-6 -mt-6"><svg height="26" width="100%" viewBox="0 0 1440 26"><path d="M0,16 C600,52 900,0 1440,12" stroke="#0ea5a4" stroke-width="2" fill="none"><animate attributeName="d" dur="2.8s" repeatCount="indefinite" values="M0,16 C600,52 900,0 1440,12;M0,12 C600,20 900,28 1440,12;M0,16 C600,52 900,0 1440,12" /></path></svg></div>
+
+    <section id="focus" class="px-6 lg:px-12 py-16 section-animated fade-delay-1">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-2xl font-bold mb-6">Focus Areas</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 glass rounded-xl card-hover-animated shadow-xl">
+            <h4 class="font-semibold">Additive Manufacturing</h4>
+            <p class="text-sm text-slate-300 mt-2">3D printing, CNC routing and laser cutting to take designs from idea to functional prototype.</p>
+          </div>
+          <div class="p-6 glass rounded-xl card-hover-animated shadow-xl">
+            <h4 class="font-semibold">IoT & Smart Systems</h4>
+            <p class="text-sm text-slate-300 mt-2">Embedded systems, sensors, and cloud analytics for real-world automation and monitoring.</p>
+          </div>
+          <div class="p-6 glass rounded-xl card-hover-animated shadow-xl">
+            <h4 class="font-semibold">Entrepreneurship</h4>
+            <p class="text-sm text-slate-300 mt-2">Pre-incubation, mentorship, and industry linkages to help startups launch and scale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="divider-wave -mb-6 -mt-6"><svg height="26" width="100%" viewBox="0 0 1440 26"><path d="M0,16 C600,52 900,0 1440,12" stroke="#0ea5a4" stroke-width="2" fill="none"><animate attributeName="d" dur="2.2s" repeatCount="indefinite" values="M0,16 C600,52 900,0 1440,12;M0,12 C600,20 900,28 1440,12;M0,16 C600,52 900,0 1440,12" /></path></svg></div>
+    <section id="infrastructure" class="px-6 lg:px-12 py-16 section-animated fade-delay-2 bg-gradient-to-b from-transparent to-[#021225]/30">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-start">
+        <div class="glass p-6 rounded-xl card-hover-animated">
+          <h3 class="text-xl font-bold mb-4">Infrastructure & Tools</h3>
+          <ul class="list-inside list-disc text-slate-300 space-y-2 text-sm">
+            <li>3D Printers (FDM & SLA), CO₂ Laser Engraver, CNC Machines</li>
+            <li>Electronics benches, Oscilloscopes, Power Supplies, Microcontrollers</li>
+            <li>Welding & Fabrication, Vertical Drilling, Precision Tools</li>
+            <li>Design Room, Collaboration Hubs, 24x7 Lab Access</li>
+          </ul>
+        </div>
+        <div class="glass p-6 rounded-xl card-hover-animated">
+          <h3 class="text-xl font-bold mb-4">Programs & Activities</h3>
+          <p class="text-sm text-slate-300">Structured AICTE training, workshops, ideathons, hackathons, interdisciplinary projects, and mentorship sessions to move students from concept to market-ready products.</p>
+        </div>
+      </div>
+    </section>
+    <div class="divider-wave -mb-6 -mt-6"><svg height="26" width="100%" viewBox="0 0 1440 26"><path d="M0,16 C600,52 900,0 1440,12" stroke="#0ea5a4" stroke-width="2" fill="none"><animate attributeName="d" dur="2.4s" repeatCount="indefinite" values="M0,16 C600,52 900,0 1440,12;M0,12 C600,20 900,28 1440,12;M0,16 C600,52 900,0 1440,12" /></path></svg></div>
+    <!-- Team Sections with All Committee Details -->
+    <section id="team" class="px-6 lg:px-12 py-16 team-section section-animated fade-delay-3">
+      <div class="max-w-6xl mx-auto">
+        <h3 class="text-2xl font-bold mb-8 text-accent">Our Team</h3>
+        <!-- Chief Mentor & Tech Gurus -->
+        <div class="mb-10">
+          <h4 class="text-xl font-semibold mb-3 text-teal-300">Chief Mentor & Coordinators</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">BN</div><div><div class="font-semibold">Dr. B. Nagaraj</div><div class="text-xs text-slate-400">Chief Mentor / Coordinator, IDEA Lab</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">PR</div><div><div class="font-semibold">Dr. M. S. Pradeep Raj</div><div class="text-xs text-slate-400">Co-Coordinator, IDEA Lab</div></div></div>
+          </div>
+        </div>
+        <div class="mb-10">
+          <h4 class="text-xl font-semibold mb-3 text-teal-300">Tech Gurus</h4>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">GP</div><div><div class="font-semibold">Mr. Gajendran Parthasarathi</div><div class="text-xs text-slate-400">Assistant Professor, ECE</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">CM</div><div><div class="font-semibold">Mr. C. Mukuntharaj</div><div class="text-xs text-slate-400">Assistant Professor, ECE</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">RK</div><div><div class="font-semibold">Mr. Ram Kumar Shanmugam</div><div class="text-xs text-slate-400">Assistant Professor, Mechanical</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">MR</div><div><div class="font-semibold">Mr. M. Rajesh</div><div class="text-xs text-slate-400">Assistant Professor, Mechanical</div></div></div>
+          </div>
+        </div>
+        <!-- Advisory Committee -->
+        <div class="mb-10">
+          <h4 class="text-xl font-semibold mb-3 text-teal-300">Advisory Committee</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">BN</div><div><div class="font-semibold">Dr. B. Nagaraj</div><div class="text-xs text-slate-400">Chief Mentor, RTC IDEA Lab</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">PR</div><div><div class="font-semibold">Dr. M. S. Pradeep Raj</div><div class="text-xs text-slate-400">Co-Coordinator, RTC IDEA Lab</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">KG</div><div><div class="font-semibold">Dr. K. Geetha</div><div class="text-xs text-slate-400">Principal – Academics, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">CK</div><div><div class="font-semibold">Dr. C. Krishnaraj</div><div class="text-xs text-slate-400">Vice Principal, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">RA</div><div><div class="font-semibold">Dr. R. Arunkumar</div><div class="text-xs text-slate-400">AVP, COE, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">JH</div><div><div class="font-semibold">Dr. Jimry Henry</div><div class="text-xs text-slate-400">Director, PG Studies, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">SS</div><div><div class="font-semibold">Dr. S. Seenivasan</div><div class="text-xs text-slate-400">Dean, SOM, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">SM</div><div><div class="font-semibold">Dr. S. Manikandan</div><div class="text-xs text-slate-400">Dean, SOC, RTC</div></div></div>
+          </div>
+        </div>
+        <!-- Purchase Committee -->
+        <div>
+          <h4 class="text-xl font-semibold mb-3 text-teal-300">Purchase Committee</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">BN</div><div><div class="font-semibold">Dr. B. Nagaraj</div><div class="text-xs text-slate-400">Principal & Chief Mentor, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">KG</div><div><div class="font-semibold">Dr. K. Geetha</div><div class="text-xs text-slate-400">Principal – Academics, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">CK</div><div><div class="font-semibold">Dr. C. Krishnaraj</div><div class="text-xs text-slate-400">Vice Principal, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">JH</div><div><div class="font-semibold">Dr. Jimry Henry</div><div class="text-xs text-slate-400">Director, PG Studies, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">SS</div><div><div class="font-semibold">Dr. S. Seenivasan</div><div class="text-xs text-slate-400">Dean, SOM, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">SM</div><div><div class="font-semibold">Dr. S. Manikandan</div><div class="text-xs text-slate-400">Dean, SOC, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">JP</div><div><div class="font-semibold">Mr. Jayapal</div><div class="text-xs text-slate-400">Manager, RTC</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">GP</div><div><div class="font-semibold">Mr. Gajendran Parthasarathi</div><div class="text-xs text-slate-400">Assistant Professor, ECE</div></div></div>
+            <div class="p-4 glass rounded-xl flex gap-4 items-center card-hover-animated"><div class="w-14 h-14 rounded-full bg-gradient-to-br from-[#083047] to-[#052233] flex items-center justify-center">RK</div><div><div class="font-semibold">Mr. Ram Kumar Shanmugam</div><div class="text-xs text-slate-400">Assistant Professor, Mechanical</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="px-6 lg:px-12 py-8 text-sm text-slate-400 section-animated fade-delay-2">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <div>© Rathinam Technical Campus — IDEA Lab</div>
+        <div class="text-xs">Built for experiential learning, prototyping and entrepreneurship.</div>
+      </div>
+    </footer>
+  </div>
+  <script>
+    // Animate blueprint/gears and mouse interactivity
+    document.addEventListener('mousemove', (e)=>{
+      const blueprints = document.querySelectorAll('.blueprint');
+      blueprints.forEach((bp,i)=>{
+        const angle = 3 + ((e.clientX + e.clientY)/24)%65;
+        bp.style.transform = `rotate(${angle+i*9}deg)`;
+      });
+      // Animate gears as original
+      const gears = document.querySelectorAll('.gear g');
+      gears.forEach((g,i)=>{
+        const speed = (i%2===0)?0.018:-0.014;
+        g.style.transform = `rotate(${(e.clientX+e.clientY)*speed % 360}deg)`;
+      });
+    });
+  </script>
+</body>
+</html>
